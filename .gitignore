@@ -1,0 +1,25 @@
+
+node_modules/
+**/node_modules/
+
+
+.env
+**/.env
+
+# Build outputs
+dist/
+frontend/dist/
+backend/dist/
+
+# Logs
+*.log
+logs/
+
+# IDE/editor files
+.vscode/
+.DS_Store
+
+# React/Vite specific
+frontend/.next/
+frontend/.turbo/
+frontend/.cache/
