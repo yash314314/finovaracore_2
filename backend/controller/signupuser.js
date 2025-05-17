@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const bcrypt = require("bcrypt");
-const signupSchema = require("../zod/userClearance"); // You might want a separate schema for signup with password confirm etc.
+const signupSchema = require("../zod/signupclear");
 const User = require("../models/user");
 
 const signupUser = async (req, res) => {
