@@ -32,10 +32,10 @@ export default function SignupPage() {
 
       if (res.user.role === "admin") {
         navigate("/admin-dashboard");
-      } else if (res.role === "retailer") {
+      } else if (res.user.role === "retailer") {
         navigate("/retailer-dashboard");
       }
-      else {
+      else if (res.user.role === "user") {
         navigate("/user-dashboard");
       }
     } catch (err) {

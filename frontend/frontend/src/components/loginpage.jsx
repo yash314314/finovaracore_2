@@ -1,14 +1,16 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from "axios";
 const mockLogin = async (email, password) => {
-  if (email === "admin@site.com" && password === "admin123") {
-    return { role: "admin", token: "admin-token" };
+  try {
+    const response = await axios.post("https://finovaracore-2.onrender.com/api/auth/login", {
+      username: email,
+      password,
+    });
+    return response.data;
+  } catch (e) {
+    console.log(e);
   }
-  if (email === "user@site.com" && password === "user123") {
-    return { role: "user", token: "user-token" };
-  }
-  throw new Error("Invalid credentials");
 };
 
 export default function LoginPage() {
@@ -22,10 +24,12 @@ export default function LoginPage() {
     try {
       const res = await mockLogin(email, password);
       localStorage.setItem("token", res.token);
-      localStorage.setItem("role", res.role);
-      if (res.role === "admin") {
+      localStorage.setItem("role", res.user.role);
+      if (res.user.role === "admin") {
         navigate("/admin-dashboard");
-      } else {
+      }else if (res.user.role === "retailer") {
+        navigate("/retailer-dashboard");}
+       else {
         navigate("/user-dashboard");
       }
     } catch (err) {

@@ -14,7 +14,7 @@ const signupUser = async (req, res) => {
 
     const { username, password, role } = parsed.data;
 
-    // Check if username already exists
+
     const existingUser = await User.findOne( {username} );
     if (existingUser) {
       return res.status(409).json({ message: 'Username already exists' });
@@ -22,7 +22,7 @@ const signupUser = async (req, res) => {
 
 
 
-    // Create new user instance
+
     const newUser = new User({
       username,
       password,
@@ -41,7 +41,7 @@ const signupUser = async (req, res) => {
     // Respond with token and user info
     res.status(201).json({
       token,
-      user: {
+      user_data: {
         id: newUser._id,
         username: newUser.username,
         role: newUser.role,
