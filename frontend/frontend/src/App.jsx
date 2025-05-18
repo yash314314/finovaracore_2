@@ -8,12 +8,13 @@ import SignupPage from './components/signup';
 import UserDashboard from './components/userdashboard';
 import AdminDashboard from './components/admindashboard';
 import ManagerDashboard from './components/retailerdashboard';
+import AuthLandingPage from './components/authlanding';
 
 function App() {
 return <>
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<AadhaarStatusChecker />} />
+      <Route path="/" element={<AuthLandingPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/signup" element={<SignupPage />} />
       <Route path="/user-dashboard" element={<UserDashboard />} />
