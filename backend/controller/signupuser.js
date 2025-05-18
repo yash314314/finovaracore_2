@@ -41,7 +41,7 @@ const signupUser = async (req, res) => {
     // Respond with token and user info
     res.status(201).json({
       token,
-      user_data: {
+      user: {
         id: newUser._id,
         username: newUser.username,
         role: newUser.role,

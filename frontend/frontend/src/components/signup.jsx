@@ -28,14 +28,14 @@ export default function SignupPage() {
     try {
       const res = await mockSignup(email, password, role);
       localStorage.setItem("token", res.token);
-      localStorage.setItem("role", res.user.role);
+      localStorage.setItem("role", res.user_data.role);
 
-      if (res.user.role === "admin") {
+      if (res.user_data.role === "admin") {
         navigate("/admin-dashboard");
-      } else if (res.user.role === "retailer") {
+      } else if (res.user_data.role === "retailer") {
         navigate("/retailer-dashboard");
       }
-      else if (res.user.role === "user") {
+      else if (res.user_data.role === "user") {
         navigate("/user-dashboard");
       }
     } catch (err) {
